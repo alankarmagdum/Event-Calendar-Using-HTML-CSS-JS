@@ -42,6 +42,9 @@ In this project i have create the Event-Calender using HTML, CSS, JavaScript.
 ## It is updated with the real time date months and year
 
 
+# Documentation
+
+[Documentation](https://github.com/alankarmagdum/Event-Calendar-Using-HTML-CSS-JS)
 
 
 
