@@ -35,7 +35,10 @@ function load() {
   const month = dt.getMonth();
   const year = dt.getFullYear();
 
+  //first day of month
   const firstDayOfMonth = new Date(year, month, 1);
+  
+  //value for the first day of a month is one so when we give it zero.
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   
   const dateString = firstDayOfMonth.toLocaleDateString('en-us', {
@@ -44,13 +47,19 @@ function load() {
     month: 'numeric',
     day: 'numeric',
   });
+  
+  //remaning days block
   const paddingDays = weekdays.indexOf(dateString.split(', ')[0]);
 
+   //Current Month And Year.
   document.getElementById('monthDisplay').innerText = 
     `${dt.toLocaleDateString('en-us', { month: 'long' })} ${year}`;
 
+  
+   //loop again and re-render everything 
   calendar.innerHTML = '';
 
+   //filled date block a day class`
   for(let i = 1; i <= paddingDays + daysInMonth; i++) {
     const daySquare = document.createElement('div');
     daySquare.classList.add('day');
@@ -69,11 +78,13 @@ function load() {
         const eventDiv = document.createElement('div');
         eventDiv.classList.add('event');
         eventDiv.innerText = eventForDay.title;
-        daySquare.appendChild(eventDiv);
+        daySquare.appendChild(eventDiv);   //add event in day
       }
 
       daySquare.addEventListener('click', () => openModal(dayString));
-    } else {
+    } 
+    //block of padding days add but it's unshow
+    else {
       daySquare.classList.add('padding');
     }
 
